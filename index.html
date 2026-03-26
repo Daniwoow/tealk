@@ -9,30 +9,18 @@
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;500;800&display=swap" rel="stylesheet">
 
     <style>
-        /* --- ANIMAÇÕES (O segredo do movimento suave) --- */
+        /* --- ANIMAÇÕES --- */
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-
-        .animate {
-            animation: fadeInUp 0.8s ease-out forwards;
-            opacity: 0; /* Começa invisível para a animação funcionar */
-        }
-
-        /* Delay para cada elemento aparecer um pouco depois do outro (efeito cascata) */
+        .animate { animation: fadeInUp 0.8s ease-out forwards; opacity: 0; }
         .delay-1 { animation-delay: 0.2s; }
         .delay-2 { animation-delay: 0.4s; }
         .delay-3 { animation-delay: 0.6s; }
         .delay-4 { animation-delay: 0.8s; }
 
-        /* --- ESTILOS QUE VOCÊ JÁ TINHA --- */
+        /* --- ESTILO GERAL --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
@@ -43,7 +31,7 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            padding: 20px;
+            padding: 40px 20px;
         }
 
         .container {
@@ -58,7 +46,7 @@
         .logo {
             font-size: 52px;
             font-weight: 800;
-            margin-bottom: 10px;
+            margin-bottom: 5px;
             letter-spacing: -2px;
             background: linear-gradient(135deg, #6c5ce7 0%, #a29bfe 50%, #fab1a0 100%);
             -webkit-background-clip: text;
@@ -72,30 +60,34 @@
             letter-spacing: 2px;
             color: #a29bfe;
             font-weight: 500;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
         }
 
-        h1 { font-size: 28px; line-height: 1.3; margin-bottom: 30px; color: #2d3436; }
+        h1 { font-size: 26px; line-height: 1.3; margin-bottom: 25px; color: #2d3436; }
 
-        .features { display: flex; flex-direction: column; gap: 12px; margin-bottom: 40px; }
+        /* --- CARDS DE FEATURES --- */
+        .features { 
+            display: flex; 
+            flex-direction: column; 
+            gap: 12px; 
+            margin-bottom: 35px; 
+        }
 
         .feature-item {
             background: #f8f9fa;
-            padding: 15px;
+            padding: 14px;
             border-radius: 20px;
-            font-size: 16px;
+            font-size: 15px;
             color: #636e72;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
             border: 1px solid #f1f1f1;
-            transition: 0.3s;
         }
 
-        .feature-item:hover {
-            transform: scale(1.02);
-            border-color: #a29bfe;
-            background: #fff;
-        }
-
-        .form { display: flex; flex-direction: column; gap: 12px; }
+        /* --- FORMULÁRIO COM ELEMENTOS DE LOGIN --- */
+        .form { display: flex; flex-direction: column; gap: 15px; }
 
         input {
             padding: 18px;
@@ -105,9 +97,10 @@
             outline: none;
             transition: 0.3s;
             text-align: center;
+            width: 100%;
         }
 
-        input:focus { border-color: #6c5ce7; }
+        input:focus { border-color: #6c5ce7; background-color: #fdfcff; }
 
         button {
             padding: 18px;
@@ -121,12 +114,61 @@
             transition: 0.3s;
         }
 
-        button:hover {
-            background: #5849d1;
-            box-shadow: 0 8px 15px rgba(108, 92, 231, 0.3);
+        button:hover { 
+            background: #5849d1; 
+            box-shadow: 0 8px 15px rgba(108, 92, 231, 0.2);
+            transform: translateY(-1px);
         }
 
-        .footer { margin-top: 30px; font-size: 13px; color: #b2bec3; }
+        /* --- ELEMENTOS EXTRAS (O QUE VOCÊ PEDIU) --- */
+        .form-options {
+            display: flex;
+            justify-content: space-between;
+            margin-top: -5px;
+            padding: 0 5px;
+        }
+
+        .form-options a {
+            font-size: 13px;
+            color: #a29bfe;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+
+        .form-options a:hover { color: #6c5ce7; text-decoration: underline; }
+
+        .divider {
+            margin: 25px 0;
+            border-top: 1px solid #eee;
+            position: relative;
+        }
+
+        .divider span {
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            padding: 0 15px;
+            color: #b2bec3;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .signup-section {
+            margin-top: 10px;
+            font-size: 15px;
+            color: #636e72;
+        }
+
+        .signup-section a {
+            color: #6c5ce7;
+            text-decoration: none;
+            font-weight: 800;
+            margin-left: 5px;
+        }
+
+        .footer { margin-top: 40px; font-size: 13px; color: #b2bec3; }
     </style>
 </head>
 
@@ -134,7 +176,6 @@
     <div class="container">
         <div class="logo animate delay-1">Tealk</div>
         <p class="tagline animate delay-1">Rede Social Acolhedora</p>
-
         <h1 class="animate delay-2">Conecte-se de um jeito que faz sentido para você.</h1>
 
         <div class="features animate delay-3">
@@ -144,8 +185,23 @@
         </div>
 
         <div class="form animate delay-4">
-            <input type="email" placeholder="Digite seu melhor e-mail">
-            <button>Entrar na lista de espera</button>
+            <input type="email" placeholder="E-mail ou Usuário">
+            <input type="password" placeholder="Senha">
+            
+            <div class="form-options">
+                <a href="#">Esqueceu a senha?</a>
+                <a href="#">Login com SMS</a>
+            </div>
+
+            <button>ENTRAR</button>
+
+            <div class="divider">
+                <span>OU</span>
+            </div>
+
+            <p class="signup-section">
+                Novo no Tealk? <a href="#">Cadastre-se</a>
+            </p>
         </div>
 
         <p class="footer animate delay-4">Privacidade respeitada. Em breve disponível. ✨</p>
