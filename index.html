@@ -3,28 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tealk | Conexões Reais</title>
+    <title>Tealk | Onde o incomum é arte</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;500;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100;300;500;800&display=swap" rel="stylesheet">
 
     <style>
-        /* --- ANIMAÇÕES MELHORADAS --- */
+        /* --- ANIMAÇÕES AJUSTADAS (SUAVES E LENTAS) --- */
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
         .animate {
-            animation: fadeInUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+            /* Duração mantida em 1.8s para uma entrada calma */
+            animation: fadeInUp 1.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
             opacity: 0;
         }
 
-        .delay-1 { animation-delay: 0.2s; }
-        .delay-2 { animation-delay: 0.35s; }
-        .delay-3 { animation-delay: 0.5s; }
-        .delay-4 { animation-delay: 0.7s; }
+        /* Delays proporcionais */
+        .delay-1 { animation-delay: 0.3s; }
+        .delay-2 { animation-delay: 0.6s; }
+        .delay-3 { animation-delay: 0.9s; }
 
         /* --- ESTILO GERAL --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -33,100 +34,170 @@
             font-family: 'Lexend', sans-serif;
             background-color: #f3f0ff;
             color: #2d3436;
+            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
             padding: 40px 20px;
         }
 
-        .container {
-            max-width: 550px;
-            background: white;
-            padding: 50px 40px;
-            border-radius: 40px;
-            box-shadow: 0 20px 40px rgba(108, 92, 231, 0.1);
-            text-align: center;
-            transition: transform 0.3s ease;
+        /* --- LAYOUT SPLIT --- */
+        .hero-container {
+            display: flex;
+            max-width: 1200px;
+            width: 100%;
+            align-items: center;
+            justify-content: space-between;
+            gap: 60px;
         }
 
-        .container:hover {
-            transform: translateY(-4px);
+        /* --- LADO ESQUERDO: O MANIFESTO --- */
+        .hero-text {
+            flex: 1.2;
+            text-align: left;
+        }
+
+        /* Container do Logo para sobreposição do infinito */
+        .logo-wrapper {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 5px;
+            /* Padding ajustado para o novo tamanho 1.5x */
+            padding: 15px 45px; 
         }
 
         .logo {
-            font-size: 52px;
+            font-size: 64px;
             font-weight: 800;
-            margin-bottom: 5px;
-            letter-spacing: -2px;
+            letter-spacing: -3px;
             background: linear-gradient(135deg, #6c5ce7 0%, #a29bfe 50%, #fab1a0 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            display: inline-block;
+            position: relative;
+            z-index: 2; /* Nome Tealk fica na frente */
+        }
+
+        .infinity-symbol {
+            position: absolute;
+            /* Tamanho AJUSTADO para 1.5x (era 320px em 2x, agora é 240px) */
+            font-size: 240px; 
+            font-weight: 100; /* Linha fina mantida */
+            /* Degradê suave e transparente mantido */
+            background: linear-gradient(135deg, rgba(108, 92, 231, 0.25) 0%, rgba(250, 177, 160, 0.25) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%); /* Centraliza perfeitamente atrás do nome */
+            z-index: 1; /* Símbolo fica atrás */
         }
 
         .tagline {
             font-size: 14px;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            color: #a29bfe;
-            font-weight: 500;
+            letter-spacing: 3px;
+            color: #6c5ce7;
+            font-weight: 300;
             margin-bottom: 25px;
+            /* Margem compensatória devido ao novo padding do logo-wrapper */
+            margin-top: -10px; 
         }
 
-        h1 { font-size: 26px; line-height: 1.3; margin-bottom: 25px; color: #2d3436; }
+        .hero-text h1 {
+            font-size: 38px;
+            line-height: 1.3;
+            font-weight: 300;
+            margin-bottom: 30px;
+            color: #2d3436;
+        }
 
-        /* --- CARDS --- */
+        .mission-description {
+            font-size: 19px;
+            line-height: 1.6;
+            color: #636e72;
+            border-left: 4px solid #a29bfe;
+            padding-left: 25px;
+            margin-bottom: 40px;
+            max-width: 550px;
+        }
+
+        .mission-description strong {
+            color: #6c5ce7;
+            font-weight: 800;
+        }
+
         .features {
             display: flex;
-            flex-direction: column;
+            flex-wrap: wrap;
             gap: 12px;
-            margin-bottom: 35px;
         }
 
         .feature-item {
-            background: #f8f9fa;
-            padding: 14px;
+            background: rgba(255, 255, 255, 0.7);
+            padding: 12px 22px;
             border-radius: 20px;
             font-size: 15px;
-            color: #636e72;
+            color: #2d3436;
+            font-weight: 300;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
-            border: 1px solid #f1f1f1;
-            transition: all 0.25s ease;
+            border: 1px solid rgba(108, 92, 231, 0.1);
+            transition: all 0.3s ease;
         }
 
         .feature-item:hover {
-            transform: translateY(-3px) scale(1.02);
+            transform: translateY(-3px);
             background: #ffffff;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            box-shadow: 0 10px 20px rgba(108, 92, 231, 0.1);
         }
 
-        /* --- FORM --- */
-        .form { display: flex; flex-direction: column; gap: 15px; }
+        /* --- LADO DIREITO: CARD DE LOGIN --- */
+        .login-area {
+            flex: 0.8;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container-login {
+            width: 100%;
+            max-width: 420px;
+            background: white;
+            padding: 50px 40px;
+            border-radius: 40px;
+            box-shadow: 0 30px 60px rgba(108, 92, 231, 0.15);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .container-login:hover {
+            transform: translateY(-5px);
+        }
+
+        h2 { font-size: 22px; margin-bottom: 30px; color: #2d3436; font-weight: 500; }
+
+        .form { display: flex; flex-direction: column; gap: 18px; }
 
         input {
-            padding: 18px;
+            padding: 20px;
             border-radius: 20px;
-            border: 2px solid #eee;
+            border: 2px solid #f1f1f1;
             font-size: 16px;
             outline: none;
-            transition: all 0.25s ease;
+            transition: all 0.3s ease;
+            background: #fcfcfc;
             text-align: center;
-            width: 100%;
         }
 
         input:focus {
             border-color: #6c5ce7;
-            background-color: #fdfcff;
-            transform: scale(1.02);
+            background-color: #ffffff;
             box-shadow: 0 5px 15px rgba(108, 92, 231, 0.1);
+            transform: scale(1.02);
         }
 
         button {
-            padding: 18px;
+            padding: 20px;
             border-radius: 20px;
             border: none;
             background: #6c5ce7;
@@ -134,25 +205,20 @@
             font-weight: 600;
             font-size: 16px;
             cursor: pointer;
-            transition: all 0.25s ease;
+            transition: all 0.3s ease;
+            margin-top: 5px;
         }
 
         button:hover {
             background: #5849d1;
-            box-shadow: 0 12px 25px rgba(108, 92, 231, 0.3);
-            transform: translateY(-2px) scale(1.03);
+            box-shadow: 0 15px 30px rgba(108, 92, 231, 0.3);
+            transform: translateY(-2px);
         }
 
-        button:active {
-            transform: scale(0.97);
-        }
-
-        /* --- EXTRAS --- */
         .form-options {
             display: flex;
-            justify-content: space-between;
-            margin-top: -5px;
-            padding: 0 5px;
+            justify-content: center;
+            margin-top: 5px;
         }
 
         .form-options a {
@@ -179,11 +245,9 @@
             padding: 0 15px;
             color: #b2bec3;
             font-size: 12px;
-            font-weight: 500;
         }
 
         .signup-section {
-            margin-top: 10px;
             font-size: 15px;
             color: #636e72;
         }
@@ -195,43 +259,93 @@
             margin-left: 5px;
         }
 
-        .footer { margin-top: 40px; font-size: 13px; color: #b2bec3; }
+        .footer { 
+            margin-top: 35px; 
+            font-size: 12px; 
+            color: #b2bec3; 
+            text-align: center;
+            line-height: 1.5;
+        }
+
+        /* --- RESPONSIVIDADE --- */
+        @media (max-width: 1024px) {
+            .hero-container {
+                flex-direction: column;
+                text-align: center;
+                gap: 50px;
+                padding-top: 40px;
+            }
+            .hero-text {
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                padding-right: 0;
+            }
+            .mission-description {
+                border-left: none;
+                border-top: 3px solid #a29bfe;
+                padding-left: 0;
+                padding-top: 20px;
+            }
+            .features { justify-content: center; }
+        }
     </style>
 </head>
 
 <body>
-<div class="container">
-    <div class="logo animate delay-1">Tealk</div>
-    <p class="tagline animate delay-1">Rede Social Acolhedora</p>
-    <h1 class="animate delay-2">Conecte-se de um jeito que faz sentido para você.</h1>
+    <main class="hero-container">
+        
+        <section class="hero-text">
+            <div class="logo-wrapper animate delay-1">
+                <span class="infinity-symbol">∞</span>
+                <div class="logo">Tealk</div>
+            </div>
+            <p class="tagline animate delay-1">Onde o "incomum" é visto como arte.</p>
+            
+            <h1 class="animate delay-2">
+                Desenhado para quem se sente deslocado dos <br>
+                padrões geométricos inflexíveis da sociedade.
+            </h1>
+            
+            <div class="mission-description animate delay-2">
+                A <strong>Tealk</strong> é o seu espaço de liberdade e expressão. Um refúgio sem julgamentos 
+                ou indiferenças, criado para enaltecer a sua <strong>singularidade</strong> através de um senso 
+                real de inclusão, pertencimento e responsabilidade.
+            </div>
 
-    <div class="features animate delay-3">
-        <div class="feature-item">🤝 Amizades baseadas em interesses reais</div>
-        <div class="feature-item">☁️ Ambiente livre de pressões sociais</div>
-        <div class="feature-item">💬 Comunicação no seu próprio ritmo</div>
-    </div>
+            <div class="features animate delay-3">
+                <div class="feature-item">Identidade Valorizada</div>
+                <div class="feature-item">Refúgio Seguro</div>
+                <div class="feature-item">Sem Pressão Social</div>
+            </div>
+        </section>
 
-    <div class="form animate delay-4">
-        <input type="email" placeholder="E-mail ou Usuário">
-        <input type="password" placeholder="Senha">
+        <section class="login-area animate delay-3">
+            <div class="container-login">
+                <h2>Bem-vindo à sua nova casa</h2>
+                <div class="form">
+                    <input type="email" placeholder="E-mail ou Usuário">
+                    <input type="password" placeholder="Senha">
+                    
+                    <div class="form-options">
+                        <a href="#">Esqueceu sua senha?</a>
+                    </div>
 
-        <div class="form-options">
-            <a href="#">Esqueceu a senha?</a>
-            <a href="#">Login com SMS</a>
-        </div>
+                    <button>ENTRAR NA REDE</button>
 
-        <button>ENTRAR</button>
+                    <div class="divider">
+                        <span>OU</span>
+                    </div>
 
-        <div class="divider">
-            <span>OU</span>
-        </div>
+                    <p class="signup-section">
+                        Novo por aqui? <a href="#">Criar Conta</a>
+                    </p>
+                </div>
+                <p class="footer">Privacidade em primeiro lugar.<br>Em breve disponível para todos. ✨</p>
+            </div>
+        </section>
 
-        <p class="signup-section">
-            Novo no Tealk? <a href="#">Cadastre-se</a>
-        </p>
-    </div>
-
-    <p class="footer animate delay-4">Privacidade respeitada. Em breve disponível. ✨</p>
-</div>
+    </main>
 </body>
 </html>
